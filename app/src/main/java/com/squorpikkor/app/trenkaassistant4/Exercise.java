@@ -1,30 +1,21 @@
 package com.squorpikkor.app.trenkaassistant4;
 
-class Exercise {
+public class Exercise {
 
-    private int ID;
+    private double weight_1;
+    private double count_1;
+    private double weight_2;
+    private double count_2;
+    private double weight_3;
+    private double count_3;
+    private double weight_4;
+    private double count_4;
+
     private String name;
-    //the_best_training
-    //today_training    //Сохранение текущей тренировки упражнения, чтобы при переключении
-                        // на другое упражнение, не терялись данные на текущее (например,
-                        // если оно ещё не завершено)
+    private String date;
+    private int status;
 
 
-    public void setID(int ID) {
-        this.ID = ID;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getID() {
-        return ID;
-    }
 
 
 }

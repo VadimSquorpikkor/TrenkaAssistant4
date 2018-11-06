@@ -1,50 +1,74 @@
 package com.squorpikkor.app.trenkaassistant4;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
+import java.util.ArrayList;
 
-import java.util.List;
+/**
+ * Created by Parsania Hardik on 26-Apr-17.
+ */
+public class TrainingAdapter extends BaseAdapter {
 
-public class TrainingAdapter extends ArrayAdapter<Training> {
+    private Context context;
+    private ArrayList<Training> trainingList;
 
-    private LayoutInflater inflater;
-    private int layout;
-    private List<Training> sourceList;
+    public TrainingAdapter(Context context, ArrayList<Training> trainingList) {
 
-    TrainingAdapter(Context context, int resource, List<Training> sourceList) {
-        super(context, resource, sourceList);
-        this.sourceList = sourceList;
-        this.layout = resource;
-        this.inflater = LayoutInflater.from(context);
+        this.context = context;
+        this.trainingList = trainingList;
     }
 
-    @SuppressLint({"SetTextI18n", "DefaultLocale"})
-    @NonNull
-    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
 
-        @SuppressLint("ViewHolder")
-        View view = inflater.inflate(this.layout, parent, false);
-
-        TextView nameView = view.findViewById(R.id.name);
-        TextView activityView = view.findViewById(R.id.activity);
-        TextView elementView = view.findViewById(R.id.element);
-
-        Training state = sourceList.get(position);
-
-        nameView.setText(state.getName());
-        activityView.setText(String.format("%.5f" , state.getActivity()) + " кБк");
-        //activityView.setText(String.valueOf(state.getActivity()));
-        elementView.setText(state.getElement());
-
-        Log.e("LOGG!!",  "position: " + position);
-
-        return view;
+    @Override
+    public int getCount() {
+        return trainingList.size();
     }
+
+    @Override
+    public Object getItem(int position) {
+        return trainingList.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return 0;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        ViewHolder holder;
+
+        if (convertView == null) {
+            holder = new ViewHolder();
+            LayoutInflater inflater = (LayoutInflater) context
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.training_lv_item, null, true);
+
+            holder.tvname = (TextView) convertView.findViewById(R.id.name);
+            holder.tvhobby = (TextView) convertView.findViewById(R.id.hobby);
+            holder.tvcity = (TextView) convertView.findViewById(R.id.city);
+
+
+            convertView.setTag(holder);
+        }else {
+            // the getTag returns the viewHolder object set as a tag to the view
+            holder = (ViewHolder)convertView.getTag();
+        }
+
+        holder.tvname.setText(trainingList.get(position).getYear());
+        holder.tvhobby.setText(trainingList.get(position).getMonth());
+        holder.tvcity.setText(trainingList.get(position).getDay());
+
+        return convertView;
+    }
+
+    private class ViewHolder {
+
+        protected TextView tvname, tvhobby, tvcity;
+    }
+
 }
