@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
 public class Database2 extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
@@ -173,3 +173,4 @@ public class Database2 extends SQLiteOpenHelper {
         return cursor.getCount();
     }
 }
+ **/

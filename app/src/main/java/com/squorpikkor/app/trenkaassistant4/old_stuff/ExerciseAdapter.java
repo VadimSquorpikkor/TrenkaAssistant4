@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.squorpikkor.app.trenkaassistant4.R;
 
 import java.util.List;
-
+/**
 public class ExerciseAdapter extends ArrayAdapter<Exercise> {
 
     private LayoutInflater inflater;
@@ -50,3 +50,4 @@ public class ExerciseAdapter extends ArrayAdapter<Exercise> {
         return view;
     }
 }
+**/

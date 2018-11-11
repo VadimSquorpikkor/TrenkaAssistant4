@@ -10,6 +10,7 @@ public class Training {
     //  текущего дня                        //
     //--------------------------------------//
 
+    private int id;
     private int year;
     private int month;
     private int day;
@@ -18,6 +19,15 @@ public class Training {
     private int newRecordCount;
 
     private ArrayList<Exercise> exerciseList;
+
+    //region getters & setters
+    public int getID() {
+        return id;
+    }
+
+    public void setID(int id) {
+        this.id = id;
+    }
 
     public int getYear() {
         return year;
@@ -62,6 +72,7 @@ public class Training {
     public int getNewRecordCount() {
         return newRecordCount;
     }
+    //endregion
 
     public void setNewRecordCount(int newRecordCount) {
         this.newRecordCount = newRecordCount;
@@ -76,4 +87,19 @@ public class Training {
         this.newRecordCount = newRecordCount;
         this.exerciseList = new ArrayList<>();  //todo insert empty exercises into new list
     }
+
+    public Training(int year, int month, int day) {
+        this.year = year;
+        this.month = month;
+        this.day = day;
+
+    }
+
+    //Конструктор для БД, для создании объекта, в методе getTraining
+    public Training() {
+    }
+
+    //todo конструктор для loadTraining (данные загружаются из БД)
+
+    //todo конструктор для createNewTraining (вводятся данные для даты, остальные -- пустые)
 }
