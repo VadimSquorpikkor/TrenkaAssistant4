@@ -53,13 +53,7 @@ public class TrainingActivity extends AppCompatActivity {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.new_training_button:
-                        //todo делать через метод, преобразующего сегодняшнюю дату в инты
-                        //todo или через алерт, в котором будет стоять сегодняшняя дата, с возможностью её редактирования
-                        databaseHelper.addNewTrainingToBD(2018, 11,11);
-                        trainingList.clear();
-                        trainingList.addAll(databaseHelper.getAllTrainings());
-                        lvTraining.setAdapter(trainingAdapter);
-
+                        addNewTraining();
                 }
             }
         };
@@ -89,5 +83,14 @@ public class TrainingActivity extends AppCompatActivity {
 
     }
 
+    void addNewTraining() {
+        //todo делать через метод, преобразующего сегодняшнюю дату в инты
+        //todo или через алерт, в котором будет стоять сегодняшняя дата, с возможностью её редактирования
+        databaseHelper.addNewTrainingToBD(2018, 11,11);
+        trainingList.clear();
+        trainingList.addAll(databaseHelper.getAllTrainings());
+        lvTraining.setAdapter(trainingAdapter);
+
+    }
 
 }
